@@ -9,6 +9,7 @@ blog_posts = []
 def index():
     return render_template('top.html', blog_posts=blog_posts)
 
+# /write ルートを追加
 @app.route('/write', methods=['GET', 'POST'])
 def write():
     if request.method == 'POST':
