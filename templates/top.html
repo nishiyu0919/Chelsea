@@ -11,17 +11,16 @@
         <h1>サッカーブログ</h1>
     </header>
     <div class="container">
+        <!-- 投稿された記事一覧を表示 -->
+        {% for post in posts %}
         <div class="post">
-            <h2>記事タイトル1</h2>
-            <p>記事の概要や内容をここに表示します。記事の詳細な情報を追加することができます。</p>
-            <a href="記事のURL">続きを読む</a>
+            <h2>{{ post[1] }}</h2>
+            <p>{{ post[3] }}</p>
+            <p>{{ post[4] }}</p>
+            <!-- 詳細ページへのリンクを追加 -->
+            <a href="{{ url_for('read', post_id=post[0]) }}">続きを読む</a>
         </div>
-        <div class="post">
-            <h2>記事タイトル2</h2>
-            <p>記事の概要や内容をここに表示します。記事の詳細な情報を追加することができます。</p>
-            <a href="記事のURL">続きを読む</a>
-        </div>
-        <!-- 他の記事も同様に追加 -->
+        {% endfor %}
     </div>
     <a href="{{ url_for('write') }}">記事を書く</a>
 </body>

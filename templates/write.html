@@ -4,59 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/write.css') }}">
-    <title>記事を書く</title>
+    <title>サッカーブログ</title>
 </head>
 <body>
-    <h1>記事を書く</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <label for="title">記事のタイトル:</label>
-        <input type="text" id="title" name="title" required><br><br>
-        
-        <label for="image">写真をアップロード（任意、複数選択可）:</label>
-        <input type="file" id="image" name="image" multiple><br><br>
-        
-        <!-- 写真のプレビューを表示するための要素 -->
-        <div class="image-preview" id="image-preview"></div>
-        
-        <label for="date">書いた日付:</label>
-        <input type="date" id="date" name="date" required><br><br>
-        
-        <label for="content">記事の内容:</label><br>
-        <textarea id="content" name="content" rows="4" cols="50" required></textarea><br><br>
-        
-        <input type="submit" value="投稿する">
-    </form>
-
-    <!-- JavaScriptを使用して写真のプレビューを更新 -->
-    <script>
-        const imageInput = document.getElementById('image');
-        const imagePreview = document.getElementById('image-preview');
-
-        imageInput.addEventListener('change', (e) => {
-            // 選択されたファイルを処理
-            for (const file of e.target.files) {
-                if (file.type.startsWith('image/')) {
-                    const imageItem = document.createElement('div');
-                    imageItem.classList.add('image-item');
-
-                    const img = document.createElement('img');
-                    img.src = URL.createObjectURL(file);
-                    img.setAttribute('width', '100');
-                    img.setAttribute('height', '100');
-                    imageItem.appendChild(img);
-
-                    const removeButton = document.createElement('span');
-                    removeButton.classList.add('remove-button');
-                    removeButton.innerText = '×';
-                    removeButton.addEventListener('click', () => {
-                        imageItem.remove(); // ×マークをクリックして写真を削除
-                    });
-                    imageItem.appendChild(removeButton);
-
-                    imagePreview.appendChild(imageItem);
-                }
-            }
-        });
-    </script>
+    <header>
+        <h1>記事を書く</h1>
+    </header>
+    <div class="container">
+        <form method="POST" action="/write" enctype="multipart/form-data">
+            <label for="title">タイトル</label>
+            <input type="text" name="title" id="title" required>
+            
+            <label for="image">画像</label>
+            <input type="file" name="image" id="image" accept="image/*">
+            
+            <label for="date">日付</label>
+            <input type="date" name="date" id="date" required>
+            
+            <label for="content">内容</label>
+            <textarea name="content" id="content" required></textarea>
+            
+            <input type="submit" value="投稿">
+        </form>
+    </div>
+    <a href="{{ url_for('index') }}">戻る</a>
 </body>
 </html>
