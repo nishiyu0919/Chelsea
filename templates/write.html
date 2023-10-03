@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記事を書く</title>
+</head>
+<body>
+    <h1>記事を書く</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="title">記事のタイトル:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <label for="image">写真をアップロード（任意）:</label>
+        <input type="file" id="image" name="image"><br><br>
+        
+        <label for="date">書いた日付:</label>
+        <input type="date" id="date" name="date" required><br><br>
+        
+        <label for="content">記事の内容:</label><br>
+        <textarea id="content" name="content" rows="4" cols="50" required></textarea><br><br>
+        
+        <input type="submit" value="投稿する">
+    </form>
+</body>
+</html>
