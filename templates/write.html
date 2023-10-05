@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>記事を書く</h1>
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" onsubmit="return false;">
         <label for="title">タイトル:</label>
         <input type="text" id="title" name="title" required><br><br>
 
@@ -18,8 +18,47 @@
         <label for="image">画像アップロード (複数選択可):</label><br>
         <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png, .gif" multiple><br><br>
 
-        <input type="submit" value="投稿する">
+        <input type="button" value="アップロード" onclick="showUploadedImages()">
     </form>
+    
+    <div id="uploaded-images">
+        <!-- ここにアップロードした写真を表示 -->
+    </div>
+
     <a href="{{ url_for('top') }}">戻る</a>
+
+    <script>
+        function showUploadedImages() {
+            var imageDiv = document.getElementById('uploaded-images');
+            imageDiv.innerHTML = '';  // 既存の内容をクリア
+
+            var input = document.getElementById('image');
+            for (var i = 0; i < input.files.length; i++) {
+                var file = input.files[i];
+                var imageContainer = document.createElement('div');
+                imageContainer.className = 'image-container';
+
+                var image = document.createElement('img');
+                image.src = URL.createObjectURL(file);
+                image.width = 200;  // 画像の幅を設定
+                imageContainer.appendChild(image);
+
+                var deleteButton = document.createElement('button');
+                deleteButton.textContent = '削除';
+                deleteButton.onclick = createDeleteHandler(imageContainer); // クロージャを使用して画像コンテナを削除
+                imageContainer.appendChild(deleteButton);
+
+                imageDiv.appendChild(imageContainer);
+            }
+
+            // 削除ボタン用のクロージャを作成する関数
+            function createDeleteHandler(container) {
+                return function() {
+                    container.remove();  // 削除ボタンがクリックされたら対応する画像コンテナを削除
+                };
+            }
+        }
+    </script>
+
 </body>
 </html>
