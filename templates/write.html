@@ -1,32 +1,25 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/write.css') }}">
-    <title>サッカーブログ</title>
+    <title>サッカーブログ - 記事を書く</title>
 </head>
 <body>
-    <header>
-        <h1>記事を書く</h1>
-    </header>
-    <div class="container">
-        <form method="POST" action="/write" enctype="multipart/form-data">
-            <label for="title">タイトル</label>
-            <input type="text" name="title" id="title" required>
-            
-            <label for="image">画像</label>
-            <input type="file" name="image" id="image" accept="image/*">
-            
-            <label for="date">日付</label>
-            <input type="date" name="date" id="date" required>
-            
-            <label for="content">内容</label>
-            <textarea name="content" id="content" required></textarea>
-            
-            <input type="submit" value="投稿">
-        </form>
-    </div>
-    <a href="{{ url_for('index') }}">戻る</a>
+    <h1>記事を書く</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="title">タイトル:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="date">日付:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="content">記事内容:</label><br>
+        <textarea id="content" name="content" rows="10" cols="40" required></textarea><br><br>
+
+        <label for="image">画像アップロード (複数選択可):</label><br>
+        <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png, .gif" multiple><br><br>
+
+        <input type="submit" value="投稿する">
+    </form>
+    <a href="{{ url_for('top') }}">戻る</a>
 </body>
 </html>

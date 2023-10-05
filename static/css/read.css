@@ -1,0 +1,13 @@
+body {
+    text-align: center; /* テキストを中央に配置 */
+}
+
+.container {
+    display: inline-block; /* コンテナをインラインブロック要素に設定 */
+    text-align: left; /* コンテナ内のテキストを左揃えに設定 */
+}
+
+.container img {
+    display: block; /* 画像をブロック要素に設定 */
+    margin: 0 auto; /* 画像を水平方向に中央に配置 */
+}

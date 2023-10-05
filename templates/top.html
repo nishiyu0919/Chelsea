@@ -1,27 +1,15 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/top.css') }}">
-    <title>サッカーブログ</title>
+    <title>Soccer Blog</title>
 </head>
 <body>
-    <header>
-        <h1>サッカーブログ</h1>
-    </header>
-    <div class="container">
-        <!-- 投稿された記事一覧を表示 -->
-        {% for post in posts %}
-        <div class="post">
-            <h2>{{ post[1] }}</h2>
-            <p>{{ post[3] }}</p>
-            <p>{{ post[4] }}</p>
-            <!-- 詳細ページへのリンクを追加 -->
-            <a href="{{ url_for('read', post_id=post[0]) }}">続きを読む</a>
-        </div>
+    <h1>Soccer Blog</h1>
+    <ul>
+        {% for blog in blogs %}
+            <li><a href="{{ url_for('read', blog_id=blog[0]) }}">{{ blog[1] }} - {{ blog[2] }}</a></li>
         {% endfor %}
-    </div>
+    </ul>
     <a href="{{ url_for('write') }}">記事を書く</a>
 </body>
 </html>

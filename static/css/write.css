@@ -1,13 +1,11 @@
+/* Reset some default styles */
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
+
+/* Style for the card container */
 .card {
     max-width: 600px;
     background-color: #fff;
@@ -16,22 +14,32 @@ body {
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* Style for labels inside the card */
 .card label {
     font-weight: bold;
 }
+
+/* Style for the image preview container */
 .image-preview {
     display: flex;
+    justify-content: center; /* Center content horizontally */
     flex-wrap: wrap;
     margin-top: 10px;
 }
+
+/* Style for individual images in the preview */
 .image-preview img {
     max-width: 100px;
     max-height: 100px;
     margin: 5px;
 }
+
+/* Style for remove button in the image preview item */
 .image-preview .image-item {
     position: relative;
 }
+
 .image-preview .image-item .remove-button {
     position: absolute;
     top: 0;

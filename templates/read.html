@@ -1,20 +1,22 @@
+<!-- read.html -->
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <!-- 他の設定やスタイルなど -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ詳細</title>
 </head>
 <body>
-    <header>
-        <h1>{{ post.title }}</h1>
-    </header>
-    <div class="container">
-        <p>{{ post.date }}</p>
-        <p>{{ post.content }}</p>
-        {% if image_data %}
-            <!-- 画像を表示する場合 -->
-            <img src="data:image/jpeg;base64,{{ image_data }}" alt="{{ post.title }}"> 
-        {% endif %}
-    </div>
-    <a href="{{ url_for('index') }}">戻る</a>
+    <h1>タイトル: {{ blog[0] }}</h1>
+    <p>投稿日: {{ blog[1] }}</p>
+    
+    <h2>画像</h2>
+    {% for i in range(images|length) %}
+    <img src="data:image/jpeg;base64,{{ image_data_base64[i] }}" alt="{{ images[i][0] }}">
+    {% endfor %}
+    
+    <p>{{ blog[2] }}</p>
+    <a href="{{ url_for('top') }}">トップページに戻る</a>
 </body>
 </html>
