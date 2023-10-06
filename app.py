@@ -50,7 +50,7 @@ def write():
                         insert_image(blog_id, filename, image_data)
 
                 flash('記事が投稿されました')
-                return redirect(url_for('top'))
+                return redirect(url_for('top'))  # top.html にリダイレクト
 
     return render_template('write.html')
 
