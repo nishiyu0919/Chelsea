@@ -6,28 +6,32 @@
 </head>
 <body>
     <div id="container">
-        <h1>記事を書く</h1>
+        <h1>記事を投稿</h1>
         <form method="POST" enctype="multipart/form-data" onsubmit="submitForm(event);">
-            <label for="title">タイトル:</label>
+            <label for="title">タイトル</label>
             <input type="text" id="title" name="title" required><br><br>
 
-            <label for="date">日付:</label>
+            <label for="date">日付</label>
             <input type="date" id="date" name="date" required><br><br>
 
-            <label for="content">記事内容:</label><br>
+            <label for="content">記事内容</label><br>
             <textarea id="content" name="content" rows="10" cols="40" required></textarea><br><br>
 
             <label for="image">画像アップロード (複数選択可):</label><br>
-            <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png, .gif" multiple><br><br>
+            <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png, .gif" multiple required><br><br>
 
-            <input type="button" value="アップロード" onclick="showUploadedImages()">
-            <input type="submit" value="投稿">
+            <div id="uploaded-images">
+                <!-- ここにアップロードした写真を表示 -->
+            </div>
+
+            <div class="button-container">
+                <input type="button" value="アップロード" onclick="showUploadedImages()">
+                <input type="submit" value="投稿">
+            </div>
+
+            
         </form>
-    
-        <div id="uploaded-images">
-            <!-- ここにアップロードした写真を表示 -->
-        </div>
-
+        
         <a href="{{ url_for('top') }}">戻る</a>
     </div>
 
@@ -61,13 +65,6 @@
                     container.remove();  // 削除ボタンがクリックされたら対応する画像コンテナを削除
                 };
             }
-        }
-
-        // フォームを送信する関数
-        function submitForm(event) {
-            event.preventDefault(); // デフォルトの送信動作をキャンセル
-            var form = document.querySelector('form');
-            form.submit(); // フォームを手動で送信
         }
     </script>
 </body>

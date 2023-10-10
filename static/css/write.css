@@ -1,3 +1,11 @@
+/* リセットCSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* フォントと全体のスタイル */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -17,19 +25,24 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* コンテナの最大幅を設定 */
+    margin: 0 auto; /* コンテナを水平中央に配置 */
 }
 
+/* ヘッダー、フォーム、アップロードされた画像、リンクのスタイル */
 h1, form, #uploaded-images, a {
     text-align: left;
     width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 10px;
+    margin: 20px 0;
+    padding: 20px;
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* パディングを含めたボックスサイズ */
 }
 
+/* フォームのスタイル */
 form {
     display: flex;
     flex-direction: column;
@@ -39,31 +52,28 @@ form {
 label {
     text-align: left;
     width: 100%;
-    max-width: 600px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 input[type="text"],
 input[type="date"],
-textarea {
+textarea,
+input[type="file"] {
     width: 100%;
-    max-width: 600px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-input[type="file"] {
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 10px;
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px; /* アップロードと投稿ボタン間の余白を追加 */
 }
 
-/* 投稿ボタンとアップロードボタンのスタイル調整 */
 input[type="submit"],
 input[type="button"] {
-    margin-top: 20px;
     padding: 10px 20px;
     background-color: #007BFF;
     color: #fff;
@@ -71,19 +81,51 @@ input[type="button"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    flex: 1;
+    margin-right: 10px;
 }
 
+/* ボタンホバー時のスタイル */
 input[type="submit"]:hover,
 input[type="button"]:hover {
     background-color: #0056b3;
 }
 
-/* リンクのスタイルを指定 */
+/* リンクのスタイル */
 a {
-    text-decoration: none; /* リンクの下線を削除 */
-    color: #007BFF; /* リンクの色を指定 */
+    text-decoration: none;
+    color: #007BFF;
 }
 
 a:hover {
-    text-decoration: underline; /* ホバー時に下線を表示 */
+    text-decoration: underline;
+}
+/* 画像と削除ボタンのコンテナ */
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px; /* 画像コンテナのマージンを追加 */
+}
+
+/* 画像 */
+.image-container img {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* 削除ボタン */
+.image-container button {
+    background-color: #ff5555; /* ボタンの背景色を赤に設定 */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.image-container button:hover {
+    background-color: #ff0000; /* ホバー時の背景色を濃い赤に変更 */
 }

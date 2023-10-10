@@ -2,14 +2,22 @@
 <html>
 <head>
     <title>Soccer Blog</title>
+    <link rel="stylesheet" href="static/css/top.css">
 </head>
 <body>
     <h1>Soccer Blog</h1>
-    <ul>
-        {% for blog in blogs %}
-            <li><a href="{{ url_for('read', blog_id=blog[0]) }}">{{ blog[1] }} - {{ blog[2] }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <ul>
+            {% for blog in blogs %}
+                <li class="post">
+                    <a href="{{ url_for('read', blog_id=blog[0]) }}">
+                        <h2>{{ blog[1] }}</h2>
+                        <p class="date">{{ blog[2] }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
     <a href="{{ url_for('write') }}">記事を書く</a>
 </body>
 </html>

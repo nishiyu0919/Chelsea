@@ -1,32 +1,66 @@
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+/* リセットCSS */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
-header {
+
+/* フォントと全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
+
+/* コンテナスタイル */
 .container {
     max-width: 800px;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin: 20px auto; /* 上下の余白を追加 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* 記事スタイル */
 .post {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
+    margin-bottom: 20px; /* 記事ごとの下マージンを追加 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+    transition: transform 0.2s;
 }
+
+/* ホバー時の浮き上がり効果 */
+.post:hover {
+    transform: translateY(-5px);
+}
+
+/* 記事のタイトル */
+.post h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* 記事の日付 */
+.post .date {
+    font-size: 14px;
+    color: #777;
+}
+
+/* リンクのスタイル */
 a {
     text-decoration: none;
     color: #007BFF;
+    transition: color 0.2s;
 }
+
 a:hover {
-    text-decoration: underline;
+    color: #0056b3;
 }
